@@ -163,9 +163,43 @@ var $motdico; // Déclaration de variable
          $dico = new dictionnaire();
         
 
-        if($_SESSION['dico'] == NULL && !isset($_SESSION['dico']) && empty($_SESSION['dico']) )  {
-         $this->motdico = $dico->get_mot();
-         $_SESSION['dico'] = $this->motdico;
-         $badletter = array();
-        $goodletter = array();
+        if($_SESSION['dico'] == NULL && !isset($_SESSION['dico']) && empty($_SESSION['dico']) )  { // Si il n'y a pas de mot stocké
+         $this->motdico = $dico->get_mot();  // Instanciation pour obtenir un mot
+         $_SESSION['dico'] = $this->motdico; // Stocke le mot obtenu
+         $badletter = array();  // Initialisation du tableau qui stocke la mauvaise lettre
+        $goodletter = array();  // Initialisation du tableau qui stocke la bonne lettre
         }
+
+                         // On split les lettres
+     $motSoumis = str_split($Smot); // Convertit une chaîne de caractères en tableau
+     $motdico = str_split("visiooo");
+
+                           //On check si les mots sont égaux ou non.
+			if($Smot == $_SESSION['dico']) {
+				
+				return true; // On renvoi un message de validation
+			}
+
+            // Sinon on commence à générer les erreur
+                    $badletter = array_intersect($motSoumis,$motdico); // retourne un tableau contenant toutes les valeurs de array qui sont présentes dans tous les autres arguments. 
+                    $goodletter = array_intersect_assoc($motdico,$motSoumis); // renvoie un tableau contenant toutes les valeursarray présentes dans tous les arguments.  
+                    $notin = array('-','-','-','-','-','-','-');        // On remplace les lettres non existantes par des tirets
+                 
+                 
+                    
+                      $majletter = array_diff_assoc($badletter,$goodletter);  //  Calcule la différence entre des tableaux avec vérification d'index supplémentaire
+                        
+                      foreach($majletter as $key => $va)
+			{
+			$majwords[$key] = strtoupper($va); // On met les lettres existante mais mal positionees en Majuscule
+			}
+	
+		$word = array_replace($notin,$goodletter);
+			$result = array_replace($word,$majwords);
+		$return = implode($result, ''); // On détruit l'array pour réobtenir le mot.
+
+		return $return; // On renvoi le mot
+		}
+		
+        
+    }
