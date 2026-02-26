@@ -43,4 +43,24 @@ class controller {   // Gère la logique entre l'interface utilisateur et les do
         unset($_SESSION['mot']);                     // On detruit le mot en "memoire"
         $this->vue->run=1;
 
-        
+         } else {
+        $indice = $verif->indices($_POST["mot"],$_SESSION['mot']); // Fonction qui compare les deux mots et retourne des indices
+        $tab = $_SESSION['tab_mot'];  // Récupère la valeur stockée en session et la met dans la variable
+        $tab[] = $indice;  // Ajoute une nouvelle valeur à la fin du tableau $tab
+        $_SESSION['tab_mot'] = $tab;   // On enlève les accents et on affiche uniquement les indices
+      }    
+
+       }else {                                       
+      echo "<font color=red>Mot invalide !! Le mot doit contenir 7 lettres.</font>"; // Affiche une affirmation
+    }  
+  }
+
+  private function perdu(){
+    if (!$this->vue->run && sizeof($this->vue->tab_mot)>=5) {  // Si le jeu n'est pas en cours et que le tableau contient au moins 5 éléments
+      $this->vue->run = 1;// Attribue à une variable appelée run à l'intérieur de la vue objet la valeur 1
+      echo "<p>Le mot &eacute;tait : ".$_SESSION['mot']."</p>";      // faudrais le passer a la vue ...
+      unset($_SESSION['mot']); // Détruit la valeur stockée
+    }
+
+
+  }
