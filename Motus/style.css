@@ -1,0 +1,78 @@
+body {
+    display: flex;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: #f0f0f0;
+    padding: 20px;
+  }
+  
+  .container {
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 40px;
+  }
+  
+  form {
+    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  form input[type="text"] {
+    width: calc(100% - 12px);
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  form input[type="submit"] {
+    background-color: #fbabdd;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  form input[type="submit"]:hover {
+    background-color: #3ae6da;
+  }
+  
+  #grille {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .case {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  #chances {
+    margin-top: 10px;
+  }
+  
+  #message {
+    margin-top: 10px;
+    font-weight: bold;
+    color: red;
+  }
+  
