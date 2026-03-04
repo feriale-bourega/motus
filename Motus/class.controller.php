@@ -64,3 +64,4 @@ class controller {   // Gère la logique entre l'interface utilisateur et les do
 
 
   }
+}
